@@ -1,0 +1,31 @@
+# 서버 기본설정 및 SSL 설정
+server:
+  port: 8081
+--- # Microservice 설정
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8000/eureka
+--- # 로깅 설정
+logging:
+  level:
+    com.park9eon.micro: DEBUG
+    org.springframework.web: DEBUG
+    org.springframework.data: DEBUG
+    org.springframework.cloud: DEBUG
+    org.springframework.security: DEBUG
+    org.hibernate: ERROR
+--- # Database 설정
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/micro
+    username: root
+    password:
+--- # Jackson 설정
+spring:
+  jackson:
+    property-naming-strategy: SNAKE_CASE
